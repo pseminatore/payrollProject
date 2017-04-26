@@ -22,6 +22,7 @@ int main()
       cout <<""<<endl;
     }
     calculateWages();
+    //test
 
 //Right now this just prints out all the data at the end to make sure nothing went wrong in the program
     for(int j=0; j<7; j++) {
