@@ -13,8 +13,11 @@ void getEmployeeInfo();
 int main()
 {
     calculateWages();
+
     getEmployeeInfo();
     //test
+
+
 
 //Right now this just prints out all the data at the end to make sure nothing went wrong in the program
     for(int j=0; j<7; j++) {
@@ -32,9 +35,14 @@ int main()
 void calculateWages()
 {
     for (int emp = 0;emp<7;emp++){
+            if(hours[emp] >= 40){
+                wages[emp] = hours[emp] * payRate[emp] * 1.5;
+            }else{
         wages[emp] = hours[emp] * payRate [emp];
+            }
     }
 }
+
 
 void getEmployeeInfo()
 {
@@ -50,3 +58,4 @@ void getEmployeeInfo()
       cout <<""<<endl;
     }
 }
+
