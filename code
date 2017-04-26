@@ -36,18 +36,18 @@ int main()
 }
 
 
+
 void calculateWages()
 {
     for (int emp = 0;emp<7;emp++){
             if(hours[emp] >= 40){
-                wages[emp] = hours[emp] * payRate[emp] * 1.5;
+                  double overtimePay = (hours[emp]-40) *1.5;
+                wages[emp] = (hours[emp] * payRate[emp]) + overtimePay;
             }else{
         wages[emp] = hours[emp] * payRate [emp];
             }
     }
 }
-
-
 void getEmployeeInfo()
 {
     //Gets hours and payrate information for each employee
