@@ -8,20 +8,12 @@ double payRate[7] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 double wages[7] = {0, 0, 0, 0, 0, 0, 0};
 
 void calculateWages();
+void getEmployeeInfo();
 
 int main()
 {
-    for(int i=0; i<7; i++) {
-      cout<<"Employee: "<<i+1<<endl;
-      cout<<""<<endl;
-      cout<<"Please enter the hours that Employee "<<i+1<<" worked this week: ";
-      cin >> hours[i];
-      cout<<"Please enter Employee "<<i+1<<"'s pay rate: $";
-      cin >> payRate[i];
-      cout <<""<<endl;
-      cout <<""<<endl;
-    }
     calculateWages();
+    getEmployeeInfo();
     //test
 
 //Right now this just prints out all the data at the end to make sure nothing went wrong in the program
@@ -44,3 +36,17 @@ void calculateWages()
     }
 }
 
+void getEmployeeInfo()
+{
+    //Gets hours and payrate information for each employee
+    for(int i=0; i<7; i++) {
+      cout<<"Employee: "<<i+1<<endl;
+      cout<<""<<endl;
+      cout<<"Please enter the hours that Employee "<<i+1<<" worked this week: ";
+      cin >> hours[i];
+      cout<<"Please enter Employee "<<i+1<<"'s pay rate: $";
+      cin >> payRate[i];
+      cout <<""<<endl;
+      cout <<""<<endl;
+    }
+}
