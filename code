@@ -8,6 +8,7 @@ double wages[7] = {0, 0, 0, 0, 0, 0, 0};
 int menuOption;
 void calculateWages();
 void getEmployeeInfo();
+void printEmployeeInfo();
 int main()
 {
     do{
@@ -34,21 +35,17 @@ int main()
                 inputCheck = 1;
                 cout << endl;
             }
+
         } while (inputCheck == 0);
 
         if(menuOption == 1){
 
             getEmployeeInfo();
             calculateWages();
+            printEmployeeInfo();
             //Right now this just prints out all the data at the end to make sure nothing went wrong in the program
-            for(int j=0; j<7; j++) {
-                cout << "Employee ID: "<<empId[j] << " "<<endl;
-                cout << "Hours worked: " <<hours[j] << " "<<endl;
-                cout << "Pay Rate: $" <<payRate[j] << " "<<endl;
-                cout << "Wages: $" << wages[j] << " "<< endl;
-                cout <<"--------------------------------------"<<endl;
-            }
         }
+
 
         else if (menuOption == 5)
             return 0;
@@ -75,12 +72,22 @@ void getEmployeeInfo()
 	for(int i=0; i<7; i++) {
   	cout<<"Employee: "<<i+1<<endl;
   	cout<<""<<endl;
-  	cout<<"Please enter the hours that Employee "<<i+1<<" worked this week: ";
+  	cout<<"Please enter the hours that Employee "<< i+1 <<" worked this week: ";
   	cin >> hours[i];
-  	cout<<"Please enter Employee "<<i+1<<"'s pay rate: $";
+  	cout<<"Please enter Employee "<< i+1 <<"'s pay rate: $";
   	cin >> payRate[i];
   	cout <<""<<endl;
   	cout <<""<<endl;
 	}
 }
 
+void printEmployeeInfo()
+{
+    for(int j=0; j<7; j++) {
+        cout << "Employee ID: "<<empId[j] << " "<<endl;
+        cout << "Hours worked: " <<hours[j] << " "<<endl;
+        cout << "Pay Rate: $" <<payRate[j] << " "<<endl;
+        cout << "Wages: $" << wages[j] << " "<< endl;
+        cout <<"--------------------------------------"<<endl;
+    }
+}
