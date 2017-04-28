@@ -1,93 +1,124 @@
-#include <iostream>
 
+#include <vector>
+#include <iostream>
 using namespace std;
+
+
 int hours[7] = {0, 0, 0, 0, 0, 0, 0,};
 int empId[7] = {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
 double payRate[7] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 double wages[7] = {0, 0, 0, 0, 0, 0, 0};
+vector <int> employees;
+
 int menuOption;
 void calculateWages();
 void getEmployeeInfo();
 void printEmployeeInfo();
+void employeeAmount ();
+int amountOfEmployees;
+int hiredEmployees;
+int firedEmployees;
 int main()
+
+
 {
-    do{
+   do
+    {
+       cout << "Please chose an option:\n";
+       cout << "1: Calculate wages\n2: Add employees\n3: Remove Employees\n4: Save payroll to file program\n5: Exit program\n";
 
-        cout << "Please chose an option:\n";
-        cout << "1: Calculate wages\n2: Add employees\n3: Remove Employees\n4: Save payroll to file program\n5: Exit program\n";
-
-        //Runs loop to allow input of valid data
-        int inputCheck = 1;
-        do{
-
-
+       //Runs loop to allow input of valid data
+       int inputCheck = 1;
+       do
+        {
             cin >> menuOption;
+            if (menuOption > 5 || menuOption < 1)
+            {
+               cout <<"Please enter a valid option \n\n";
+               inputCheck = 0;
+               cout << "Please chose an option:\n";
+               cout << "1: Calculate wages\n2: Add employees\n3: Remove Employees\n4: Save payroll to file program\n5: Exit program\n";
+           }
+           else
+           {
+               inputCheck = 1;
+               cout << endl;
+           }
+       }
+       while (inputCheck == 0);
 
-            if (menuOption > 5 || menuOption < 1){
-                cout <<"Please enter a valid option \n\n";
-                inputCheck = 0;
-
-                cout << "Please chose an option:\n";
-                cout << "1: Calculate wages\n2: Add employees\n3: Remove Employees\n4: Save payroll to file program\n5: Exit program\n";
-            }
-
-            else{
-                inputCheck = 1;
-                cout << endl;
-            }
-
-        } while (inputCheck == 0);
-
-        if(menuOption == 1){
-
-            getEmployeeInfo();
-            calculateWages();
-            printEmployeeInfo();
-            //Right now this just prints out all the data at the end to make sure nothing went wrong in the program
-        }
-
-
-        else if (menuOption == 5)
-            return 0;
-
-    } while (menuOption != 5);
-
-	return 0;
+       if(menuOption == 1)
+        {
+           getEmployeeInfo();
+           calculateWages();
+           printEmployeeInfo();
+           //Right now this just prints out all the data at the end to make sure nothing went wrong in the program
+       }
+       else if (menuOption == 5)
+           return 0;
+   }
+    while (menuOption != 5);
+    return 0;
 }
 
+void employeeAmount()
+{
+
+cout << "How many employees do you have?: " << endl;
+cin >> amountOfEmployees;
+
+cout << "How many new employees have you hired?: " << endl;
+cin >> hiredEmployees;
+
+cout << "How many employees have you fired?: " << endl;
+cin >> firedEmployees;
+
+amountOfEmployees = (amountOfEmployees + hiredEmployees) - firedEmployees;
+
+
+for (int k=0; k < amountOfEmployees; k++)
+    employees.push_back (k);
+
+}
 void calculateWages()
 {
-	for (int emp = 0;emp<7;emp++){
-        	if(hours[emp] >= 40){
-              	double overtimePay = (hours[emp]-40) *1.5;
-            	wages[emp] = (hours[emp] * payRate[emp]) + overtimePay;
-        	}else{
-    	wages[emp] = hours[emp] * payRate [emp];
-        	}
+	for (int emp = 0;emp<7;emp++)
+	{
+       	if(hours[emp] >= 40)
+        {
+            double overtimePay = (hours[emp]-40) *1.5;
+            wages[emp] = (hours[emp] * payRate[emp]) + overtimePay;
+        }
+       	else
+       	{
+            wages[emp] = hours[emp] * payRate [emp];
+       	}
 	}
 }
 void getEmployeeInfo()
 {
 	//Gets hours and payrate information for each employee
-	for(int i=0; i<7; i++) {
-  	cout<<"Employee: "<<i+1<<endl;
-  	cout<<""<<endl;
-  	cout<<"Please enter the hours that Employee "<< i+1 <<" worked this week: ";
-  	cin >> hours[i];
-  	cout<<"Please enter Employee "<< i+1 <<"'s pay rate: $";
-  	cin >> payRate[i];
-  	cout <<""<<endl;
-  	cout <<""<<endl;
+	for(int i=0; i<7; i++)
+    {
+        cout<<"Employee: "<<i+1<<endl;
+        cout<<""<<endl;
+        cout<<"Please enter the hours that Employee "<< i+1 <<" worked this week: " << endl;
+        cin >> hours[i];
+        cout<<"Please enter Employee "<< i+1 <<"'s pay rate: $";
+        cin >> payRate[i];
+        cout <<""<<endl;
+        cout <<""<<endl;
 	}
 }
-
 void printEmployeeInfo()
 {
-    for(int j=0; j<7; j++) {
+    for(int j=0; j<7; j++)
+    {
         cout << "Employee ID: "<<empId[j] << " "<<endl;
         cout << "Hours worked: " <<hours[j] << " "<<endl;
         cout << "Pay Rate: $" <<payRate[j] << " "<<endl;
         cout << "Wages: $" << wages[j] << " "<< endl;
         cout <<"--------------------------------------"<<endl;
-    }
+   }
 }
+
