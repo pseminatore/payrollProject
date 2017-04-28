@@ -3,10 +3,10 @@
 using namespace std;
 
 
-int hours[7] = {0, 0, 0, 0, 0, 0, 0,};
-int empId[7] = {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
-double payRate[7] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-double wages[7] = {0, 0, 0, 0, 0, 0, 0};
+vector <int> hours[7] = {0, 0, 0, 0, 0, 0, 0,};
+vector <int> empId[7] = {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
+vector <double> payRate[7] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+vector <double> wages[7] = {0, 0, 0, 0, 0, 0, 0};
 vector <int> employees;
 
 int menuOption;
@@ -24,7 +24,7 @@ int main()
    do
     {
        cout << "Please chose an option:\n";
-       cout << "1: Calculate wages\n2: Change employees\n3: Save payroll to file program\n4: Exit program\n";
+       cout << "1: Calculate wages\n2: Change employees\n3: Save payroll to file\n4: Exit program\n";
 
        //Runs loop to allow input of valid data
        int inputCheck = 1;
@@ -36,7 +36,7 @@ int main()
                cout <<"Please enter a valid option \n\n";
                inputCheck = 0;
                cout << "Please chose an option:\n";
-               cout << "1: Calculate wages\n2: Change employees\n3: Save payroll to file program\n4: Exit program\n";
+               cout << "1: Calculate wages\n2: Change employees\n3: Save payroll to file\n4: Exit program\n";
            }
            else
            {
@@ -67,6 +67,16 @@ int main()
     return 0;
 }
 
+/*
+void getEmployeeId
+{
+    for (int i=0; i<amountOfEmployees; i++)
+    {
+        if (empId[i] = 0 || empId < 0)
+    }
+}
+*/
+
 void employeeAmount()
 {
 
@@ -86,6 +96,8 @@ for (int k=0; k < amountOfEmployees; k++)
     employees.push_back (k);
 
 }
+
+
 void calculateWages()
 {
 	for (int emp = 0;emp<7;emp++)
