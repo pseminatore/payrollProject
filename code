@@ -3,10 +3,10 @@
 using namespace std;
 
 
-vector <int> hours {7 , 0};
+vector <double> hours {7,0};
 vector <int> empId {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
-vector <double> payRate {7 , 0.0};
-vector <double> wages {7 , 0.0};
+vector <double> payRate {7,0};
+vector <double> wages {7,0};
 vector <int> employees;
 
 int menuOption;
@@ -91,9 +91,12 @@ cin >> firedEmployees;
 
 amountOfEmployees = (amountOfEmployees + hiredEmployees) - firedEmployees;
 
+cout << "You have a total of " << amountOfEmployees << " employees." << endl;
 
 for (int k=0; k < amountOfEmployees; k++)
     employees.push_back (k);
+
+cout << endl;
 
 }
 
@@ -120,7 +123,7 @@ void getEmployeeInfo()
     {
         cout<<"Employee: "<<i+1<<endl;
         cout<<""<<endl;
-        cout<<"Please enter the hours that Employee "<< i+1 <<" worked this week: " << endl;
+        cout<<"Please enter the hours that Employee "<< i+1 <<" worked this week: ";
         cin >> hours[i];
         cout<<"Please enter Employee "<< i+1 <<"'s pay rate: $";
         cin >> payRate[i];
