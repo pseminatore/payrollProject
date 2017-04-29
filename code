@@ -17,9 +17,8 @@ void employeeAmount ();
 int amountOfEmployees = 7;
 int hiredEmployees;
 int firedEmployees;
+
 int main()
-
-
 {
    do
     {
@@ -80,8 +79,7 @@ void getEmployeeId
 void employeeAmount()
 {
 
-cout << "How many employees do you have?: " << endl;
-cin >> amountOfEmployees;
+cout << "You have " << amountOfEmployees << " employees currently.\n";
 
 cout << "How many new employees have you hired?: " << endl;
 cin >> hiredEmployees;
@@ -100,10 +98,9 @@ cout << endl;
 
 }
 
-
 void calculateWages()
 {
-	for (int emp = 0;emp<amountOfEmployees;emp++)
+	for (int emp = 0;emp < amountOfEmployees;emp++)
 	{
        	if(hours[emp] >= 40)
         {
@@ -116,6 +113,7 @@ void calculateWages()
        	}
 	}
 }
+
 void getEmployeeInfo()
 {
 	//Gets hours and payrate information for each employee
