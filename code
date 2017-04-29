@@ -3,10 +3,10 @@
 using namespace std;
 
 
-vector <int> hours[7] = {0, 0, 0, 0, 0, 0, 0,};
-vector <int> empId[7] = {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
-vector <double> payRate[7] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-vector <double> wages[7] = {0, 0, 0, 0, 0, 0, 0};
+vector <int> hours;
+vector <int> empId {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
+vector <double> payRate;
+vector <double> wages;
 vector <int> employees;
 
 int menuOption;
@@ -100,7 +100,7 @@ for (int k=0; k < amountOfEmployees; k++)
 
 void calculateWages()
 {
-	for (int emp = 0;emp<7;emp++)
+	for (int emp = 0;emp<amountOfEmployees;emp++)
 	{
        	if(hours[emp] >= 40)
         {
