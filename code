@@ -58,10 +58,17 @@ int main()
            employeeAmount();
        }
 
+       else if (menuOption == 3)
+       {
 
-       else if (menuOption == 4)
-           return 0;
-   }
+       }
+
+       else
+       {
+
+       }
+
+    }
     while (menuOption != 4);
     return 0;
 }
@@ -131,7 +138,7 @@ void getEmployeeInfo()
 }
 void printEmployeeInfo()
 {
-    for(int j=0; j<7; j++)
+    for(int j=0; j<amountOfEmployees; j++)
     {
         cout << "Employee ID: "<<empId[j] << " "<<endl;
         cout << "Hours worked: " <<hours[j] << " "<<endl;
