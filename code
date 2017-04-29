@@ -3,10 +3,10 @@
 using namespace std;
 
 
-vector <int> hours;
+vector <int> hours {7 , 0};
 vector <int> empId {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
-vector <double> payRate;
-vector <double> wages;
+vector <double> payRate {7 , 0.0};
+vector <double> wages {7 , 0.0};
 vector <int> employees;
 
 int menuOption;
