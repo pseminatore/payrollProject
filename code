@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
 vector <double> hours {0,0,0,0,0,0,0};
@@ -12,7 +13,6 @@ int menuOption;
 void calculateWages();
 void getEmployeeInfo();
 void printEmployeeInfo();
-void employeeAmount ();
 void saveToFile();
 int main()
 
@@ -20,19 +20,19 @@ int main()
     do
     {
        cout << "Please chose an option:\n";
-       cout << "1: Calculate wages\n2: Change employees\n3: Save payroll to file\n4: Exit program\n";
+       cout << "1: Calculate wages\n2: Save payroll to file\n3: Exit program\n";
 
        //Runs loop to allow input of valid data
        int inputCheck = 1;
        do
        {
             cin >> menuOption;
-            if (menuOption > 4 || menuOption < 1)
+            if (menuOption > 3 || menuOption < 1)
             {
                cout <<"Please enter a valid option \n\n";
                inputCheck = 0;
                cout << "Please chose an option:\n";
-               cout << "1: Calculate wages\n2: Change employees\n3: Save payroll to file\n4: Exit program\n";
+               cout << "1: Calculate wages\n2: Save payroll to file\n3: Exit program\n";
            }
            else
            {
@@ -50,19 +50,16 @@ int main()
        }
        else if (menuOption == 2)
        {
-           employeeAmount();
-       }
-       else if (menuOption == 3)
-       {
-        saveToFile();
+           saveToFile();
        }
     }
-    while (menuOption != 4);
+    while (menuOption != 3);
     return 0;
 }
+
 void calculateWages()
 {
-	for (int emp = 0;emp < amountOfEmployees;emp++)
+	for (int emp = 0;emp < 7;emp++)
 	{
        	if(hours[emp] >= 40)
         {
@@ -75,10 +72,11 @@ void calculateWages()
        	}
 	}
 }
+
 void getEmployeeInfo()
 {
 	//Gets hours and payrate information for each employee
-	for(int i=0; i<amountOfEmployees; i++)
+	for(int i=0; i<7; i++)
     {
         cout<<"Employee: "<<i+1<<endl;
         cout<<""<<endl;
@@ -90,9 +88,10 @@ void getEmployeeInfo()
         cout <<""<<endl;
 	}
 }
+
 void printEmployeeInfo()
 {
-    for(int j=0; j<amountOfEmployees; j++)
+    for(int j=0; j<7; j++)
     {
         cout << "Employee ID: "<<empId[j] << " "<<endl;
         cout << "Hours worked: " <<hours[j] << " "<<endl;
@@ -102,15 +101,17 @@ void printEmployeeInfo()
    }
 }
 
-void saveToFile(){
-ofstream saveFile;
-saveFile.open("data.txt");
-for(int j=0; j<amountOfEmployees; j++){
-saveFile << "Employee ID: "<<empId[j] << " "<<endl;
-        saveFile << "Hours worked: " <<hours[j] << " "<<endl;
-        saveFile << "Pay Rate: $" <<payRate[j] << " "<<endl;
-        saveFile << "Wages: $" << wages[j] << " "<< endl;
-        saveFile <<"--------------------------------------"<<endl;
-}
-saveFile.close();
+void saveToFile()
+{
+    ofstream saveFile;
+    saveFile.open("data.txt");
+    for(int j=0; j<7; j++)
+    {
+        saveFile << "Employee ID: "<<empId[j] << " "<<endl;
+            saveFile << "Hours worked: " <<hours[j] << " "<<endl;
+            saveFile << "Pay Rate: $" <<payRate[j] << " "<<endl;
+            saveFile << "Wages: $" << wages[j] << " "<< endl;
+            saveFile <<"--------------------------------------"<<endl;
+    }
+    saveFile.close();
 }
