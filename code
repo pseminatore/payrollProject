@@ -113,5 +113,6 @@ void saveToFile()
             saveFile << "Wages: $" << wages[j] << " "<< endl;
             saveFile <<"--------------------------------------"<<endl;
     }
+    cout << "Data successfully saved!\n\n";
     saveFile.close();
 }
