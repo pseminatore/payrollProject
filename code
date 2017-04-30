@@ -2,23 +2,25 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-
 using namespace std;
 
+//Define vectors
 vector <double> hours {0,0,0,0,0,0,0};
 vector <int> empId {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
 vector <double> payRate {0,0,0,0,0,0,0};
 vector <double> wages {0,0,0,0,0,0,0};
 
+//Define variables
 int menuOption;
 void calculateWages();
 void getEmployeeInfo();
 void printEmployeeInfo();
 void saveToFile();
 
+//Main function
 int main()
-
 {
+    //Menu option
     do
     {
        cout << "Please chose an option:\n";
@@ -58,6 +60,7 @@ int main()
     return 0;
 }
 
+//Overtime Function
 void calculateWages()
 {
 	for (int emp = 0;emp < 7;emp++)
@@ -74,6 +77,7 @@ void calculateWages()
 	}
 }
 
+//Original question
 void getEmployeeInfo()
 {
 	//Gets hours and payrate information for each employee
@@ -83,6 +87,7 @@ void getEmployeeInfo()
         cout<<""<<endl;
         cout<<"Please enter the hours that Employee "<< i+1 <<" worked this week: ";
 
+    //Input Validation
         int validHours = 1;
         while(validHours == 1)
         {
@@ -120,6 +125,7 @@ void getEmployeeInfo()
 	}
 }
 
+//Display output
 void printEmployeeInfo()
 {
     for(int j=0; j<7; j++)
@@ -132,6 +138,7 @@ void printEmployeeInfo()
    }
 }
 
+//Save to function file
 void saveToFile()
 {
     ofstream saveFile;
