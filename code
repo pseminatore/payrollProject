@@ -1,158 +1,238 @@
 #include <vector>
+
 #include <iostream>
+
 #include <fstream>
+
 #include <iomanip>
+
+
+
 using namespace std;
 
-//Define vectors
+
+
 vector <double> hours {0,0,0,0,0,0,0};
+
 vector <int> empId {5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 7580489};
+
 vector <double> payRate {0,0,0,0,0,0,0};
+
 vector <double> wages {0,0,0,0,0,0,0};
 
-//Define variables
+
+
 int menuOption;
+
 void calculateWages();
+
 void getEmployeeInfo();
+
 void printEmployeeInfo();
+
 void saveToFile();
 
-//Main function
 int main()
+
+
+
 {
-    //Menu option
+
     do
+
     {
+
        cout << "Please chose an option:\n";
+
        cout << "1: Calculate wages\n2: Save payroll to file\n3: Exit program\n";
+
+
+
        //Runs loop to allow input of valid data
+
        int inputCheck = 1;
+
        do
+
        {
+
             cin >> menuOption;
+
             if (menuOption > 3 || menuOption < 1)
+
             {
+
                cout <<"Please enter a valid option \n\n";
+
                inputCheck = 0;
+
                cout << "Please chose an option:\n";
+
                cout << "1: Calculate wages\n2: Save payroll to file\n3: Exit program\n";
+
            }
+
            else
 
            {
+
                inputCheck = 1;
+
                cout << endl;
+
            }
+
        }
+
        while (inputCheck == 0);
+
        if(menuOption == 1)
+
        {
+
            getEmployeeInfo();
+
            calculateWages();
+
            printEmployeeInfo();
+
+           //Right now this just prints out all the data at the end to make sure nothing went wrong in the program
+
        }
 
        else if (menuOption == 2)
+
        {
+
            saveToFile();
+
        }
-    } while (menuOption != 3);
+
+    }
+
+    while (menuOption != 3);
+
     return 0;
+
 }
 
-//Overtime Function
+
+
 void calculateWages()
+
 {
+
 	for (int emp = 0;emp < 7;emp++)
+
 	{
+
        	if(hours[emp] >= 40)
+
         {
+
             double overtimePay = (hours[emp]-40) *1.5;
+
             wages[emp] = (hours[emp] * payRate[emp]) + overtimePay;
+
         }
+
        	else
+
        	{
+
             wages[emp] = hours[emp] * payRate [emp];
+
        	}
+
 	}
+
 }
 
-//Original question
+
+
 void getEmployeeInfo()
+
 {
+
 	//Gets hours and payrate information for each employee
+
 	for(int i=0; i<7; i++)
+
     {
+
         cout<<"Employee: "<<i+1<<endl;
+
         cout<<""<<endl;
+
         cout<<"Please enter the hours that Employee "<< i+1 <<" worked this week: ";
 
-    //Input Validation
-        int validHours = 1;
-        while(validHours == 1)
-        {
-
-            cin >> hours[i];
-
-            if (hours[i] < 0)
-            {
-                cout << "Please enter valid hours: ";
-                validHours = 1;
-            }
-            else if (hours[i] >= 0)
-                validHours = 0;
-        }
+        cin >> hours[i];
 
         cout<<"Please enter Employee "<< i+1 <<"'s pay rate: $";
 
-        int validPay = 1;
-        while(validPay == 1)
-        {
+        cin >> payRate[i];
 
-            cin >> payRate[i];
-
-            if (payRate[i] < 15.00)
-            {
-                cout << "Please enter a payrate above $15.00: ";
-                validPay = 1;
-            }
-
-            else if (payRate[i] >= 15.00)
-                validPay = 0;
-        }
         cout <<""<<endl;
+
         cout <<""<<endl;
+
 	}
+
 }
 
-//Display output
+
+
 void printEmployeeInfo()
+
 {
+
     for(int j=0; j<7; j++)
+
     {
+        cout<<
+
         cout << "Employee ID: "<<empId[j] << " "<<endl;
+
         cout << "Hours worked: " <<hours[j] << " "<<endl;
-        cout << "Pay Rate: $"<<setprecision(2) <<payRate[j] << " "<<endl;
-        cout << "Wages: $" <<setprecision(2)<< wages[j] << " "<< endl;
+
+        cout << "Pay Rate: $"<<fixed<<setprecision(2) <<payRate[j] << " "<<endl;
+
+        cout << "Wages: $" <<fixed<<setprecision(2)<< wages[j] << " "<< endl;
+
         cout <<"--------------------------------------"<<endl;
+
    }
+
 }
 
-//Save to function file
+
+
 void saveToFile()
+
 {
+
     ofstream saveFile;
+
     saveFile.open("data.txt");
 
     for(int j=0; j<7; j++)
+
     {
+
         saveFile << "Employee ID: "<<empId[j] << " "<<endl;
+
             saveFile << "Hours worked: " <<hours[j] << " "<<endl;
-            saveFile << "Pay Rate: $" <<setprecision(2)<<payRate[j] << " "<<endl;
-            saveFile << "Wages: $" <<setprecision(2)<< wages[j] << " "<< endl;
+
+            saveFile << "Pay Rate: $" <<fixed<<setprecision(2)<<payRate[j] << " "<<endl;
+
+            saveFile << "Wages: $" <<fixed<<setprecision(2)<< wages[j] << " "<< endl;
+
             saveFile <<"--------------------------------------"<<endl;
+
     }
 
     cout << "Data successfully saved!\n\n";
+
     saveFile.close();
+
 }
